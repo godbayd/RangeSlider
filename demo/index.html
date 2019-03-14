@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Range slider</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body, .con {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .con {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: black;
+    }
+
+    .percent-display {
+      font-family: sans-serif;
+      font-size: 70px;
+      margin-bottom: 20px;
+      color: yellow;
+    }
+
+    .slide-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 160px;
+      height: 10px;
+      background-color: white;
+    }
+    .slide-bar .handle {
+      position: absolute;
+      width: 10px;
+      height: 20px;
+      background-color: grey;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="con">
+     
+     <div class="percent-display">
+        0%
+     </div>
+     
+     <div class="slide-bar">
+        <div class="handle"></div>
+     </div>
+     
+  </div>
+  <script src="../rangeSlider.js"></script>
+  <script>
+    const percentDisplay = document.querySelector('.percent-display');
+    const slider = new RangeSlider('.handle', '.slide-bar')
+
+    slider.slide(
+       prop => {
+          percentDisplay.innerHTML = prop.percentMoved + '%'
+       }
+    );
+  </script>
+</body>
+</html>
